@@ -113,23 +113,26 @@ fn main() {
     //     }
     // }
 
-    // let item = catalog.get_by_index(60);
+    let item = catalog.get_by_index(50);
+    let placeholder = Media::Placeholder;
 
-    // println!("{:#?}",item);
+    println!("{:#?}",item.unwrap_or(&placeholder));
+
+    
 
     // match catalog.get_by_index(40){
-    //     MightHaveAValue::ThereIsAValue(value)=>{
+    //     Some(value)=>{
     //         println!("Item: {:#?}",value)
     //     }
-    //     MightHaveAValue::NoValueAvl=>{
+    //     None=>{
     //         println!("Nothing!!")
     //     }
     // }
 
-    if let Some(value) = catalog.get_by_index(0){
-        println!("Item in pattern match: {:#?}",value)
-    }else{
-        println!("Nothing!!")
-    }
+    // if let Some(value) = catalog.get_by_index(0){
+    //     println!("Item in pattern match: {:#?}",value)
+    // }else{
+    //     println!("Nothing!!")
+    // }
 }
 
