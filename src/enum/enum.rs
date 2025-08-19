@@ -1,17 +1,7 @@
+mod content;
 
-
-}
-
-
-
-// enum MightHaveAValue<'a>{
-//     ThereIsAValue(&'a Media),
-//     NoValueAvl,
-// }
-
-fn print_media(media: Media){
-    println!("{:#?}",media);
-}
+use content::media::Media;
+use content::catalog::Catalog;
 
 fn main() {
     let audiobook = Media::Audiobook{
