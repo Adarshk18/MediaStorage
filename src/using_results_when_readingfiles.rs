@@ -1,21 +1,29 @@
 use std::fs;
 
-fn string_test (a: String, b: &String, c: &str){
+fn extract_errors(text: &str)-> Vec<&str>{
+    let split_text = text.split("\n");
 
+    let mut results = vec![];
+
+    for line in split_text{
+        if line.starts_with("ERROR"){
+            results.push(line);
+        }
+    }
+    results 
 }
 
 fn main() {
 
-    string_test(
-        String::from("red"),
-        &String::from("red"),
-        String::from("red").as_str()
-
-    );
-
+   
+    let mut error_logs = vec![];
 
     match fs::read_to_string("logs.txt"){
-        Ok(text_that_was_read) => println!("{}",text_that_was_read.len()),
-        Err(why_failed) => println!("failed to read file : {}",why_failed),
+        Ok(text_that_was_read) => {
+            error_logs = extract_errors(text_that_was_read.as_str());
+           
+        }
+        Err(why_failed) => {println!("failed to read file : {}",why_failed),}
     }
+     println!("{:#?}",error_logs);
 }
